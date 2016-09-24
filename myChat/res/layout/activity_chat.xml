@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000" >
+
+    <!-- <TextView
+        android:id="@+id/chat_area"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="#333333"
+        android:fontFamily="courier new"
+        android:paddingBottom="5px"
+        android:paddingLeft="5px"
+        android:paddingRight="5px"
+        android:paddingTop="5px"
+        android:scrollbars="vertical"
+        android:textColor="#dddddd"
+        android:textSize="8pt"
+        tools:context=".Chat" /> -->
+
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@+id/button1" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="#3399cc"
+        android:text="Send"
+        android:textColor="#000000" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/button1"
+        android:layout_toLeftOf="@+id/button1"
+        android:background="#555555"
+        android:ems="10"
+        android:singleLine="true"
+        android:lines="1"
+        android:maxLines="1"
+        android:paddingLeft="5px"
+        android:textColor="#ffffff" >
+
+        <requestFocus />
+    </EditText>
+
+</RelativeLayout>

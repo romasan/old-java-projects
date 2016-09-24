@@ -1,0 +1,23 @@
+
+import javax.crypto.IllegalBlockSizeException;
+
+
+public class square extends rectangle {
+	public void SetPos(int xx,int yy)
+	{
+		this.x = xx;
+		this.y = yy;
+	}
+	public void SetParameters(double width, double height)	throws IllegalArgumentException
+	{
+		if(width != height) throw new IllegalArgumentException("width not equal with height!");
+	}
+	@Override
+	public void draw()
+	{
+		System.out.printf("\n Squaredraw сторона квадрата="+ this.x,this.y,this.Width);
+	}
+}
+
+
+

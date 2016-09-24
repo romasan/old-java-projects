@@ -1,0 +1,20 @@
+package com.example.fuckinggooglemaps;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+
+public class FuckingActivity extends Activity {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_fucking);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_fucking, menu);
+        return true;
+    }
+}

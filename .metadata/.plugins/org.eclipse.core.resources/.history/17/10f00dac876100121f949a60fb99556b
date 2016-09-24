@@ -1,0 +1,37 @@
+import java.lang.reflect.Array;
+
+
+public class twCallback {
+	public String next_page;
+	public Array results;
+}
+/*
+public class User {
+	   2     public enum Gender { MALE, FEMALE };
+	   3 
+	   4     public static class Name {
+	   5       private String _first, _last;
+	   6 
+	   7       public String getFirst() { return _first; }
+	   8       public String getLast() { return _last; }
+	   9 
+	  10       public void setFirst(String s) { _first = s; }
+	  11       public void setLast(String s) { _last = s; }
+	  12     }
+	  13 
+	  14     private Gender _gender;
+	  15     private Name _name;
+	  16     private boolean _isVerified;
+	  17     private byte[] _userImage;
+	  18 
+	  19     public Name getName() { return _name; }
+	  20     public boolean isVerified() { return _isVerified; }
+	  21     public Gender getGender() { return _gender; }
+	  22     public byte[] getUserImage() { return _userImage; }
+	  23 
+	  24     public void setName(Name n) { _name = n; }
+	  25     public void setVerified(boolean b) { _isVerified = b; }
+	  26     public void setGender(Gender g) { _gender = g; }
+	  27     public void setUserImage(byte[] b) { _userImage = b; }
+	  28 }
+*/

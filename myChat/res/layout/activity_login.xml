@@ -1,0 +1,92 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#333333" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText2"
+        android:paddingBottom="5px"
+        android:paddingLeft="5px"
+        android:paddingRight="5px"
+        android:paddingTop="5px"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#dddddd" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:paddingLeft="5px"
+        android:text="Login:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#ffffff" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView2"
+        android:background="#555555"
+        android:ems="10"
+        android:lines="1"
+        android:maxLines="1"
+        android:minHeight="18pt"
+        android:paddingLeft="5px"
+        android:paddingRight="5px"
+        android:singleLine="true"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText1"
+        android:layout_marginTop="21dp"
+        android:paddingLeft="5px"
+        android:text="Password:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#ffffff" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView3"
+        android:background="#555555"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:lines="1"
+        android:maxLines="1"
+        android:minHeight="18pt"
+        android:paddingLeft="5px"
+        android:paddingRight="5px"
+        android:singleLine="true"
+        android:textColor="#ffffff" >
+
+        <requestFocus />
+    </EditText>
+
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5px"
+        android:background="@android:color/transparent"
+        android:src="@drawable/chat_icon" />
+
+</RelativeLayout>

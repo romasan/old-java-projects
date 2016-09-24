@@ -1,0 +1,20 @@
+package com.example.fuckinggooglemaps;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import com.google.android.maps.MapActivity;
+
+public class FuckingActivity extends MapActivity {
+
+    @Override
+    public void onCreate(Bundle savedInstanceData) {
+        super.onCreate(savedInstanceData);
+        setContentView(R.layout.activity_fucking);
+    }
+    
+    @Override
+    protected boolean isRouteDisplayed() {
+        return false;
+    }
+}

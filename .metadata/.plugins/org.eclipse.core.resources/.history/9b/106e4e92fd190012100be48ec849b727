@@ -1,0 +1,14 @@
+
+public class circle extends figure {
+	private int radius;
+
+	public void setRadius(int radius) {
+		this.radius = radius;
+		
+	}
+	public void draw() {
+		System.out.println("circledraw  x: " + super.x + " y: " + super.y + "radius: " + this.radius);
+	}
+}
+
+

@@ -1,0 +1,40 @@
+
+public class lab1 {
+	private static circle a;
+	private static rectangle b;
+	private static square c;
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		a = new circle();
+		a.setCoord(5, 7);
+		a.setRadius(5);
+		a.draw();
+		b = new rectangle();
+		b.setCoord(11, 10);
+		//b.setWidth(5);
+		//b.setHeight(7);
+		b.draw();
+		c = new square();
+		c.setCoord(5, 9);
+		c.draw();
+		
+		/*Composite c = new Composite();
+		c.add(...);
+		c.add(...);
+		c.add(...);
+		c.setCoords(10, 10);
+		c.draw(); - первый случай
+		
+		c.setCoords(20, 20);
+		c.draw(); - здесь все фигуры должны быть смещнены на 20 единиц по x и по y
+		
+		c.setCoords(10, 10);
+		c.draw(); - вывод должен быть такой же как и в первом случае
+		*/
+	}
+
+}

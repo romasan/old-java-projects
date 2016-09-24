@@ -1,0 +1,7 @@
+<com.google.android.maps.MapView
+                 android:layout_width="fill_parent"
+                 android:layout_height="fill_parent"
+                 android:apiKey="0NeGqmt4EgdqW1EjKXKYs_WppkLR5KB08Pi9J0w"
+                 />
+
+

@@ -1,0 +1,13 @@
+
+public class circle extends shape {
+	private int radius;
+	
+	public void setRadius(int radius) {
+		this.radius = radius;
+	}
+	
+	public void draw() {
+		System.out.println("circle ok x: " + super.crd.x + " y: " + super.crd.y + " radius: " + this.radius);
+	}
+
+}

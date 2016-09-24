@@ -1,0 +1,46 @@
+public class lab1 {
+
+	private static circle c;
+	private static rectangle r;
+	private static squar s;
+
+	public static void main(String[] args) {
+		
+		c = new circle();
+		c.setCoord(10, 15);
+		c.setRadius(5);
+		//c.draw();
+		
+		r = new rectangle();
+		r.setCoord(10, 15);
+		r.setSize(20, 30);
+		
+		rectangle r2 = new rectangle();
+		r2.setCoord(1, 2);
+		r2.setSize(3, 4);
+		//r.draw();
+		
+		s = new squar();
+		s.setCoord(10, 15);
+		s.setSize(20);
+		//s.draw();
+		
+		composite cm = new composite();
+		cm.setCoord(1, 1);
+		cm.add(c);
+		cm.add(r);
+		cm.add(s);
+		cm.add(r2);
+		cm.draw();
+		
+		cm.setCoord(10, 10);
+		cm.draw();
+
+		cm.setCoord(20, 20);
+		cm.draw();
+
+		cm.setCoord(10, 10);
+		cm.draw();
+	}
+
+}

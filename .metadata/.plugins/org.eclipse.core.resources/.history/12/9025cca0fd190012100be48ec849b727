@@ -1,0 +1,8 @@
+
+public interface shape {
+		public void setCoord(int x, int y);
+		public void draw();
+	}
+
+
+

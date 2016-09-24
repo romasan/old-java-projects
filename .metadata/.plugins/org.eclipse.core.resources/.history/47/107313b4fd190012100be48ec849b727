@@ -1,0 +1,26 @@
+import java.util.Stack; 
+
+public class composite extends shape {
+	
+	Stack<shape> stck = new Stack<shape>();
+	Stack<coord> dlt = new Stack<coord>();
+	
+	private void drawme(shape s, coord dlt) {
+		//s.setCoord(this.crd.x + s.getCoord().x, this.crd.y + s.getCoord().y);
+		s.setCoord(this.crd.x + dlt.x, this.crd.y + dlt.y);
+		s.draw();
+	}
+	public void add(shape s) {
+			//circle tmp = (circle)s;
+			stck.push(s);
+			dlt.push(s.getCoord());
+	}
+	
+	public void draw() {
+		System.out.println("\nComposite:");
+		while(!stck.empty()) {
+			this.drawme(stck.pop(), dlt.pop());
+		}
+	}
+		
+}

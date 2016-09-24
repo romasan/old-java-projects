@@ -1,0 +1,123 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#333333" >
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:paddingLeft="5px"
+        android:text="Login:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#ffffff" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView2"
+        android:background="#555555"
+        android:ems="10"
+        android:lines="1"
+        android:maxLines="1"
+        android:minHeight="18pt"
+        android:paddingLeft="5px"
+        android:paddingRight="5px"
+        android:singleLine="true"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText1"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="5px"
+        android:text="Password:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#ffffff" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView3"
+        android:background="#555555"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:lines="1"
+        android:maxLines="1"
+        android:minHeight="18pt"
+        android:paddingLeft="5px"
+        android:paddingRight="5px"
+        android:singleLine="true"
+        android:textColor="#ffffff" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/TextView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText2"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="5px"
+        android:text="Confirm password:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:background="#3399cc"
+        android:text="Registration" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/TextView4"
+        android:background="#555555"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:lines="1"
+        android:maxLines="1"
+        android:minHeight="18pt"
+        android:paddingLeft="5px"
+        android:paddingRight="5px"
+        android:singleLine="true"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText3"
+        android:paddingBottom="5px"
+        android:paddingLeft="5px"
+        android:paddingRight="5px"
+        android:paddingTop="5px"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#dddddd" />
+
+</RelativeLayout>

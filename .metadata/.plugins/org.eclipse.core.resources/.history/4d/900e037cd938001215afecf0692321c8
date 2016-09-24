@@ -1,0 +1,314 @@
+package com.example.my2;
+
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.CookieStore;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.client.protocol.ClientContext;
+import org.apache.http.impl.client.BasicCookieStore;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.protocol.BasicHttpContext;
+import org.apache.http.protocol.HttpContext;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.text.Html;
+import android.util.Log;
+import android.view.Menu;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.EditText;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+public class Chat extends Activity {
+	
+	//protected static final String LOGGER = "boobs";
+	private Button myButton;
+	private ImageButton myImg;
+	public EditText myText;
+	public TextView myChat;
+	public EditText myLogin;
+	public EditText myPassword;
+	public TextView myRequest;
+	public String key = "";
+	public String lasttime = "";
+	BasicCookieStore cookieStore;// = (CookieStore) new BasicCookieStore();
+	HttpContext localContext;// = new BasicHttpContext();
+	//localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
+	//public Editable tmp;
+	
+//-------------------------------------------------------------------------------------------------------------------main
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
+        login();
+        //chat();
+        
+    }
+//-------------------------------------------------------------------------------------------------------------------loginFunctions
+    public void addMyRequest(String J) {
+    	myRequest.setText(J);
+    	//myMessage.append("sdfsdf");
+    }
+
+	@SuppressLint("UseValueOf")
+	public void loginJson(String J) throws JSONException {
+    	
+    	JSONObject jsonObj = new JSONObject(J);
+    	//for (int i = 0; i < jsonObj.length(); i++) { 
+    	    // printing the values to the logcat 
+    	    Log.e("boobs", jsonObj.getString("error").toString());
+    	    //Log.e("boobs", "cookie: " + C);
+    	    //Log.e("boobs", "errortype:" + jsonObj.get("error").getClass().getName());
+    	    String bt = new Boolean(true).getClass().getName();
+    	    if(jsonObj.get("error").getClass().getName() == bt) {
+    	    	if(jsonObj.getBoolean("error") == false){
+    	    		//key = jsonObj.getString("key");
+    	    		chat();
+    	    	};
+    	    }
+    	    //Log.e("boobs", "is boolean");
+    } 
+
+
+//-------------------------------------------------------------------------------------------------------------------asyncLogin
+    public class MyUrlJsonAsunc extends AsyncTask<String, Void, Void>{
+    	
+    	HttpClient client;
+    	//HttpPost httpPost; 
+    	HttpResponse response;
+    	String myJson ="";
+    	
+    	//private String myJson = "test";
+    	//protected String getMyJson() {
+    	//	return myJson;
+    	//} // End : onPreExecute 
+    	
+    	@Override
+    	protected void onPreExecute() {
+    		client = new DefaultHttpClient();
+    		cookieStore = new BasicCookieStore();
+    		localContext = new BasicHttpContext();
+    		localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
+    	} // End : onPreExecute 
+
+    	@Override
+    	protected Void doInBackground(String... param) {
+    		//for (String url : blah) {
+    		//	Log.e("boobs","test: " + url);
+    		//}
+    		
+    		//Log.e("boobs","test: " + param[0] + " " + param[1]);
+    		// Perform a GET request for a JSON list
+    		String URL = "http://109.174.40.95/json/?login=" + param[0] + "&pass=" + param[1];
+            HttpUriRequest request = new HttpGet(URL);
+            // Get the response that sends back
+            //HttpResponse response = null;
+            try {
+                //HttpClient client = null;
+    			response = client.execute(request, localContext);
+    			
+    			InputStream content = response.getEntity().getContent();
+
+    	          BufferedReader buffer = new BufferedReader(new InputStreamReader(content));
+    	          String s = "";
+    	          //String data = "";
+    	          while ((s = buffer.readLine()) != null) {
+    	            myJson += s;
+    	          }
+    	          //JSONTokener tokener = new JSONTokener(myJson);
+    	          //JSONArray finalResult = new JSONArray(tokener);
+    	          
+    	          //JSONObject json = (JSONObject)new JSONParser().parse(myJson);
+    	          
+    	          
+    	          //System.out.println("name=" + json.get("error").toString());
+    	          /*try {
+    			      JSONArray jsonArray = new JSONArray(myJson);
+    			      //Log.i("boobs", "Number of entries " + jsonArray.length());
+    			      //for (int i = 0; i < jsonArray.length(); i++) {
+    			       // JSONObject jsonObject = jsonArray.getJSONObject(i);
+    			        //Log.e("boobs", ":" + jsonObject.toString());
+    			      //}
+    			    } catch (Exception e) {
+    			    	Log.e("boobs", "error105");
+    			      e.printStackTrace();
+    			    }
+    			    */
+    	          
+    			//Log.e("boobs", data.toString());
+    			//
+    			
+    			//myMessage.setText("test");
+    			
+    			
+    			
+            } catch (ClientProtocolException e1) {
+            	Log.e("boobs", "error160");
+                e1.printStackTrace();
+            } catch (IOException e1) {
+            	Log.e("boobs", "error163");
+                e1.printStackTrace();
+            }  
+            //return "test";
+    		return null;
+    	}
+    	
+    	@Override
+    	protected void onPostExecute(Void result) {
+            //do stuff
+    		String myCookies = localContext.getAttribute(ClientContext.COOKIE_STORE).toString();
+    		
+    		try {
+				JSONObject jsonObj = new JSONObject(myJson);
+				String errorMessage = jsonObj.getString("error");
+				addMyRequest(errorMessage);
+				Log.e("boobs", "errorMessage" + errorMessage);
+			} catch (JSONException e1) {
+				Log.e("boobs", "error177");
+				e1.printStackTrace();
+			}
+    		
+    		try {
+				loginJson(myJson);
+				Log.e("boobs", "success189");
+				
+			} catch (JSONException e) {
+				Log.e("boobs", "error192");
+				e.printStackTrace();
+			}
+    		
+    		Log.e("boobs", "boobs");
+            }
+
+    }
+    
+//-------------------------------------------------------------------------------------------------------------------asyncMessageSend
+    public class MyMsgSndJsonAsunc extends AsyncTask<String, Void, Void>{
+    	
+    	HttpClient client;
+    	HttpResponse response;
+    	String myJson ="";
+    	
+    	@Override
+    	protected void onPreExecute() {
+    		client = new DefaultHttpClient();
+    	} // End : onPreExecute 
+
+    	@Override
+    	protected Void doInBackground(String... param) {
+    		String URL = "http://109.174.40.95/json/?newmessage=" + param[0];
+            HttpUriRequest request = new HttpGet(URL);
+            try {
+    			response = client.execute(request, localContext);
+    			
+    			InputStream content = response.getEntity().getContent();
+
+    	          BufferedReader buffer = new BufferedReader(new InputStreamReader(content));
+    	          String s = "";
+    	          while ((s = buffer.readLine()) != null) {
+    	            myJson += s;
+    	          }
+    			
+            } catch (ClientProtocolException e1) {
+            	Log.e("boobs", "error229");
+                e1.printStackTrace();
+            } catch (IOException e1) {
+            	Log.e("boobs", "error232");
+                e1.printStackTrace();
+            }  
+            //return "test";
+    		return null;
+    	}
+    	
+    	@Override
+    	protected void onPostExecute(Void result) {
+    		
+				//bla(myJson);
+    		
+    		try {
+				JSONObject jsonObj = new JSONObject(myJson);
+				Log.e("boobs", "successsend message, error message: " + jsonObj.getString("error"));
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    		//Log.e("boobs", "boobs");
+            }
+
+    }
+
+//-------------------------------------------------------------------------------------------------------------------registration
+    public void registration() {
+    	//TODO registration
+    }
+//-------------------------------------------------------------------------------------------------------------------login
+    public void login() {
+    	setContentView(R.layout.activity_login);
+    	//this.myButton = (Button)this.findViewById(R.id.button1);
+    	this.myImg = (ImageButton)this.findViewById(R.id.imageButton1);
+    	this.myLogin = (EditText)this.findViewById(R.id.editText1);
+  	  	this.myPassword = (EditText)this.findViewById(R.id.editText2);
+        this.myRequest= (TextView)this.findViewById(R.id.textView1);
+        
+        this.myImg.setOnClickListener(new OnClickListener() {
+
+		public void onClick(View v) {
+			String logintext = myLogin.getText().toString();
+			String passtext = myPassword.getText().toString();
+        	   
+			new MyUrlJsonAsunc().execute(new String[] { logintext, passtext });
+        	//myMessage.setText(myLogin.getText().toString() + " " + myPassword.getText().toString());
+			//addMyText(myLogin.getText().toString() + " " + myPassword.getText().toString());
+          }
+        });    
+    }
+//-------------------------------------------------------------------------------------------------------------------chat    
+    public void chat() {
+    	setContentView(R.layout.activity_chat);
+        this.myText = (EditText)this.findViewById(R.id.editText1);
+        this.myChat = (TextView)this.findViewById(R.id.chat_area);
+        
+        this.myButton = (Button)this.findViewById(R.id.button1);
+        this.myButton.setOnClickListener(new OnClickListener() {
+          public void onClick(View v) {
+        	  
+        	  //Log.v("boobs", myText.getText().toString());
+        	  //myChat.setText(myText.getText().toString());
+        	  //String myCookies = localContext.getAttribute(ClientContext.COOKIE_STORE).toString();
+        	  //Log.e("boobs", "chat_cookie: " + myCookies);
+        	  String message = myChat.getText().toString();
+        	  Log.v("boobs", "send message: " + message);
+        	  //new MyMsgSndJsonAsunc().execute(new String[] { message });
+        	  
+        	  String me = "<p><font color=#9999ff>", m = "</font> ", oth = "<p><font color=#66ff66>", e = "</p>";
+        	  String text = me + "Roman" + m + "message" + e +
+        			  oth + "Masha" + m + "blah blah blah blah blah blah blah blah blah" + e;
+        	  myChat.setText(Html.fromHtml(text), TextView.BufferType.SPANNABLE);
+          }
+        });    
+    }
+    
+//------------------------------------------------------------------------------------------------------------------------menu
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_chat, menu);
+        return true;
+    }
+}

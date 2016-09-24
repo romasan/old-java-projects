@@ -1,0 +1,127 @@
+package com.example.weryu;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Point;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Bundle;
+import android.util.Log;
+
+import com.google.android.maps.GeoPoint;
+import com.google.android.maps.MapActivity;
+import com.google.android.maps.MapController;
+import com.google.android.maps.MapView;
+import com.google.android.maps.MyLocationOverlay;
+
+public class MainActivity extends MapActivity {
+
+    @Override
+    public void onCreate(Bundle savedInstanceData) {
+        super.onCreate(savedInstanceData);
+        setContentView(R.layout.activity_main);
+        
+
+        
+        //MapView mapView = (MapView) findViewById(R.id.mapview);
+        
+        /*final MapView mMapView = (MapView) findViewById(R.id.mapview);
+        mMapView.setBuiltInZoomControls(true);
+        
+     // Получаем MapController
+     MapController mMapController = mMapView.getController();
+      
+     // Перемещаем карту на заданные координаты
+     mMapController.animateTo(new GeoPoint((int)60.113337, (int)55.151317));
+      
+     mMapController.setZoom(15);*/
+        
+        
+//----------------------------------------------------------------------------------------------------------------------
+        final MapView cMapView = (MapView) findViewById(R.id.mapview);
+     // Включаем элементы интерфейса, контролирующие зум
+        cMapView.setBuiltInZoomControls(true);
+        
+     // Получаем MapController
+     // create an overlay that shows our current location
+        
+
+
+
+     
+
+     /*
+      * // Создаём менеджер местоположения и "слушателя"
+     final LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+     final LocationListener locationListener = new LocationListener() {
+             
+         @Override
+         public void onStatusChanged(String provider, int status, Bundle extras) {}
+                 
+         @Override
+         public void onProviderEnabled(String provider) {}
+                 
+         @Override
+         public void onProviderDisabled(String provider) {}
+                 
+         @Override
+         public void onLocationChanged(Location location) {}
+     };
+     locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+
+     // создаём overlay для отображения своей позиции
+     cMyLocationOverlay = new MyLocationOverlay(this, cMapView);
+     cMyLocationOverlay.disableCompass();
+     cMyLocationOverlay.enableMyLocation();
+     cMapView.getOverlays().add(cMyLocationOverlay);
+      
+     // зум
+     cMapController.setZoomCurrent(15);
+
+     // Получаем свои координаты (можно использовать LocationManager.NETWORK_PROVIDER, для иного способа определения позиции)
+     Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+     // Перемещаем карту на заданные координаты
+     cMapController.animateTo(new GeoPoint((int) location.getLatitude() * 1000000, (int) location.getLongitude() * 1000000));*/
+//----------------------------------------------------------------------------------------------------------------------        
+        
+        
+        
+        
+        
+        
+        
+    }
+    
+    public class MyCurrentLocation extends MyLocationOverlay {
+    	 
+    	 private Context context;
+    	 private MapView mapView;
+    	 
+    	 public MyCurrentLocation(Context _context, MapView _mapView) {
+    	  super(_context, _mapView);
+    	  mapView = _mapView;
+    	  context = _context;
+    	 }
+    	 
+    	 @Override
+    	 protected void drawMyLocation(Canvas _canvas, MapView _mapView, Location _lastFix, GeoPoint _myLocation, long _when) {
+    	  Point screen = mapView.getProjection().toPixels(_myLocation, null); //переводим GeoPoint в пиксели
+    	  Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.map_marker_red);
+    	  _canvas.drawBitmap(bitmap, screen.x - (bitmap.getWidth()/2), screen.y - (bitmap.getHeight()/2), null); //добавляем маркер
+    	  Log.i("MyTag", "широта: " + _lastFix.getLatitude() + " | долгота: " + _lastFix.getLongitude() + " | speed: " + _lastFix.getSpeed()
+    	    + " | provider: " + _lastFix.getProvider());
+    	  }
+    	 
+    	}
+    
+    
+    
+    @Override
+    protected boolean isRouteDisplayed() {
+        return false;
+    }
+}

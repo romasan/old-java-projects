@@ -1,0 +1,8 @@
+@relation "myrelation"
+@attribute text string
+@attribute classatr {positive,negative,neutral}
+
+@data
+'slovo1', positive
+'slovo4', negative
+'slovo7', neutral

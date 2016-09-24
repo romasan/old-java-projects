@@ -1,0 +1,32 @@
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+
+
+public class main {
+	public static String log_file = "./log.txt";
+	/**
+	 * @param args
+	 * @throws IOException 
+	 */
+	public main(String[] args) throws IOException {
+		//if (args.length > 0) {
+			
+		    try{
+		        FileWriter fw = new FileWriter(log_file, true);
+		        
+		        //one_query.search("маша", fw);
+				one_query.search("boobs", fw);
+				
+				fw.close();
+		        
+		    }catch(FileNotFoundException e){
+		        System.out.println("Файл не найден");
+		    }
+	    
+		//} else {
+		//	System.out.println("(.)(.)");
+		//}
+	}
+
+}

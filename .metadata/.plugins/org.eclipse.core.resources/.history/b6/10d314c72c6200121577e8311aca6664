@@ -1,0 +1,42 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+
+
+
+
+
+public class three {
+
+	/**
+	 * @param args
+	 * @throws IOException 
+	 * @throws UnsupportedEncodingException 
+	 * @throws ParseException 
+	 */
+	public static void main(String[] args) throws UnsupportedEncodingException, IOException {
+		//one_query oq = new one_query();
+		//one_query.main("boobs");
+		FileOutputStream out = null;
+		one_query.search("маша", out);
+		one_query.search("+100500", out);
+	    try{
+	        out = new FileOutputStream("../log.txt");
+	        
+	    }catch(FileNotFoundException e){
+	        System.out.println("Файл не найден");
+	    }
+	    //BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+	    //System.out.println("Enter text:");
+	    //while (true){
+	    //    char str = (char) in.read();
+	    //    out.write(str);
+	    //}
+	    
+		//one_query.search("маша");
+		//one_query.search("+100500");
+	}
+}

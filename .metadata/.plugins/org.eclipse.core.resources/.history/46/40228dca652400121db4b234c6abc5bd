@@ -1,0 +1,7 @@
+package com.example.weryu;
+
+import com.google.android.maps.MyLocationOverlay;
+
+public class FixedMyLocationOverlay extends MyLocationOverlay {
+
+}
