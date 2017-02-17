@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Delete 6 resources" deleteContents="false" description="Delete 6 resources" element1="/gc1" element2="/myChat" element3="/org.eclipse.swt" element4="/test0001" element5="/twitsearcher" element6="/twrulesgui" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="6" stamp="1367507602664"/>
-</session>

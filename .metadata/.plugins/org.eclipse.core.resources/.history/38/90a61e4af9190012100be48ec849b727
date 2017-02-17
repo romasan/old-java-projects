@@ -1,6 +1,0 @@
-
-public interface ishape {
-	public void setCoord(int x, int y);
-	public coord getCoord();
-	public void draw();
-}
